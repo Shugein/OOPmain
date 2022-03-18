@@ -1,0 +1,216 @@
+class Figur():
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def __str__(self):
+        return f'Фигура с координатами x = {self.x} y = {self.y}'
+
+    def draw(self):     #Способ номер 2
+        self.screen = [['.']*10 for i in range(10)]
+        self.screen[self.y-1][self.x-1] = '*'
+        self.print_screen()
+
+    def print_screen(self):
+        # def __str__(self):
+        #     return f'Фигура с площадью s = {self.S}'
+        for line in self.screen:
+            for symb in line:
+                print(symb, end='')
+            print()
+
+
+# point1 = Figur(2,7)
+# point2 = Figur(2,2)
+# point3 = Figur(5,2)
+# point4 = Figur(5,7)
+# point1.draw()
+# point2.draw()
+# point3.draw()
+# point4.draw()
+# point1.draw()
+
+
+
+class Rectangle(Figur):
+    def __init__(self, x, y, h, w):
+
+        self.x = x
+        self.y = y
+        self.h = h
+        self.w = w
+
+
+    def draw(self):
+        self.screen = [['. '] * 10 for i in range(10)]
+        for i in range(self.x,self.x + self.w):
+            for j in range(self.y,self.y + self.h):
+                self.screen[j-1][i-1] = '* '
+        self.print_screen()
+        self.S()
+    def S(self):
+        self.s = self.h*self.w
+        print(f'Фигура с площадью  s = {self.s}')
+    def print_screen(self):
+        for line in self.screen:
+            for symb in line:
+                print(symb, end='')
+            print()
+
+
+rec1 = Rectangle(4, 3, h = 6, w = 4)
+
+
+
+class SQ(Rectangle):
+    def __init__(self,x,y,a):
+        self.x = x
+        self.y = y
+        self.h = a
+        self.w = a
+sq1 = SQ(4,2,4)
+
+
+
+class PRectangle(Rectangle):
+    def __init__(self, x, y, h, w):
+        super().__init__(x, y, h, w)
+    def draw_P(self):
+        self.screen = [['.'] * 10 for i in range(10)]
+        for i in range(self.x, self.x + self.w):
+            for j in range(self.y, self.y + self.h):
+                self.screen[j - 1][i - 1] = '*'
+        for m in range(self.x+1, self.x + self.w - 1):
+            for n in range(self.y + 1, self.y + self.h - 1):
+                self.screen[n - 1][m - 1] = '.'
+            self.print_screen()
+            self.S()
+        def S(self):
+            self.s = self.h * self.w
+            print(f'Фигура с площадью  s = {self.s}')
+        def print_screen(self):
+            for line in self.screen:
+                for symb in line:
+                    print(symb, end='')
+                print()
+prec1 = PRectangle(4, 3, h=6, w=4)
+
+
+class Figur():
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def __str__(self):
+        return f'Фигура с координатами x = {self.x} y = {self.y}'
+    def draw(self):
+        screen = [['.']*10 for i in range(10)]
+        screen[self.y-1][self.x-1] = '*'
+        for line in screen:
+            for symb in line:
+                print(symb, end = '')
+            print()
+
+
+class Triangle90k(Figur):
+    '''В переменную h указывайте длинну наибольшего катета, а в w оставшегося'''
+    def __init__(self, x, y, h, w):
+
+        self.x = x
+        self.y = y
+        self.h = h
+        self.w = w
+    def draw(self):
+        m = int(input('Укажите соотношение катетов '))
+        self.screen = [['.'] * 100 for i in range(30)]
+        for i in range(self.x,self.x + self.w):
+            if i == self.x:
+                continue
+            elif i == self.x + self.w:
+                self.h = self.h - (m-1)
+            else:                                               #Нужно взять код у маши
+                self.h = self.h - m
+            for j in range(self.y,self.y + self.h):
+                self.screen[j-1][i-1] = '*'
+        self.print_screen()
+        self.S()
+    def S(self):
+        self.g = (self.h ** 2 + self.w ** 2) ** 0.5
+        self.p = ((self.h + self.w + self.g)/2)
+        self.s = ((self.p*(self.p - self.h)*(self.p - self.w)*(self.p - self.g)) ** 0.5)
+        print(f'Фигура с площадью  s = {self.s}')
+    def print_screen(self):
+        for line in self.screen:
+            for symb in line:
+                print(symb, end='')
+            print()
+tr1 = Triangle90k(4, 7, h = 18, w = 9)
+# tr1.draw()
+
+
+class Romb(Figur):
+    def __init__(self,x,y,dx,dy): #dx dy - половины диагоналей
+        super().__init__(x,y)
+        self.dx = dx
+        self.dy = dy
+    def draw(self):
+        self.screen = [['. '] * 40 for i in range(20)]
+        for i in range(20):
+            for j in range(20):
+                if (i==self.x-self.dx and j == self.y) or (i==self.x+self.dx and j == self.y):
+                    self.screen[j-1][i-1] = '* '
+                elif (j==self.y-self.dy and i == self.x) or (j==self.y+self.dy and i == self.x):
+                    self.screen[j-1][i-1] = '* '
+        self.print_screen()
+        self.S()
+
+    def S(self):
+        self.s = 2*(self.dx * self.dy)
+        print(f'Фигура с площадью  s = {self.s}')
+
+    def print_screen(self):
+        for line in self.screen:
+            for symb in line:
+                print(symb, end='')
+            print()
+
+r1 = Romb(5,7,4,6)
+
+
+class Line():
+    def __init__(self,a,b):
+        self.a = a
+        self.b = b
+    def draw(self):
+        screen = [['. '] * 20 for i in range(20)]
+        l = (max(self.b.x -self.a.x,self.b.y -self.a.y))+1
+        dx = (self.b.x - self.a.x)/l if l != 0 else 0
+        dy = (self.b.y - self.a.y)/l if l != 0 else 0
+        y = self.a.y
+        x = self.a.x
+        for i in range(0,l):
+            screen[round(y)][round(x)]='* '
+            y = y + dy
+            x = x + dx
+        screen[self.b.y][self.b.x] = '* '
+        for line in screen:
+            for symb in line:
+                print(symb, end = '')
+            print()
+
+l1 = Line(Figur(1,1),Figur(5,10))
+# l1.draw()
+
+b = [l1,r1,rec1,sq1]
+for i in b:
+    i.draw()
+    print()
+
+
+
+
+
+
+
+
+
+
+
