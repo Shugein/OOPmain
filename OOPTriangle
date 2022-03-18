@@ -1,0 +1,34 @@
+class Triangle90k(Figur):
+    '''В переменную h указывайте длинну наибольшего катета, а в w оставшегося'''
+    def __init__(self, x, y, h, w):
+
+        self.x = x
+        self.y = y
+        self.h = h
+        self.w = w
+    def draw(self):
+        m = int(input('Укажите соотношение катетов '))
+        self.screen = [['.'] * 100 for i in range(30)]
+        for i in range(self.x,self.x + self.w):
+            if i == self.x:
+                continue
+            elif i == self.x + self.w:
+                self.h = self.h - (m-1)
+            else:                                               #Нужно взять код у маши
+                self.h = self.h - m
+            for j in range(self.y,self.y + self.h):
+                self.screen[j-1][i-1] = '*'
+        self.print_screen()
+        self.S()
+    def S(self):
+        self.g = (self.h ** 2 + self.w ** 2) ** 0.5
+        self.p = ((self.h + self.w + self.g)/2)
+        self.s = ((self.p*(self.p - self.h)*(self.p - self.w)*(self.p - self.g)) ** 0.5)
+        print(f'Фигура с площадью  s = {self.s}')
+    def print_screen(self):
+        for line in self.screen:
+            for symb in line:
+                print(symb, end='')
+            print()
+tr1 = Triangle90k(4, 7, h = 18, w = 9)
+# tr1.draw()
