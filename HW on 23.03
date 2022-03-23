@@ -1,0 +1,55 @@
+class Figur():
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def __str__(self):
+        return f'Фигура с координатами x = {self.x} y = {self.y}'
+    def draw(self):
+        screen = [['.']*10 for i in range(10)]
+        screen[self.y-1][self.x-1] = '*'
+        for line in screen:
+            for symb in line:
+                print(symb, end = '')
+            print()
+
+class Rectangle(Figur):
+    def __init__(self, x, y, h, w):
+
+        self.x = x
+        self.y = y
+        self.h = h
+        self.w = w
+    def draw(self):
+        self.screen = [['. '] * 20 for i in range(20)]
+        for i in range(self.x,self.x + self.w):
+            for j in range(self.y,self.y + self.h):
+                self.screen[j-1][i-1] = '* '
+        self.print_screen()
+        self.S()
+    def S(self):
+        self.s = self.h*self.w
+        print(f'Фигура с площадью  s = {self.s}')
+    def print_screen(self):
+        for line in self.screen:
+            for symb in line:
+                print(symb, end='')
+            print()
+    def up(self):
+        u = int(input("На сколько сдвинуть фигуру вверх: "))
+        self.y = self.y-u
+    def right(self):
+        r = int(input("На сколько сдвинуть фигуру в право: "))
+        self.x = self.x+r
+    def down(self):
+        d = int(input("На сколько сдвинуть фигуру вниз: "))
+        self.y = self.y+d
+    def left(self):
+        l = int(input("На сколько сдвинуть фигуру в лево: "))
+        self.x = self.x-l
+
+rec1 = Rectangle(4, 3, h = 6, w = 4)
+# rec1.up()
+rec1.down()
+# rec1.right()
+rec1.left()
+rec1.draw()
