@@ -1,0 +1,306 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "4c1ed1b2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['goup', 'fam', 'imya', 'vozrast', 'pol']\n",
+      "['BI21-7', 'Ashin', 'Maksim', '20', 'm']\n"
+     ]
+    }
+   ],
+   "source": [
+    "import csv\n",
+    "with open('O:\\\\Факультет ИТиАБД\\\\БИ21-6\\\\Бут Богдан Олегович - 218163\\\\BI7_1304.csv') as f:\n",
+    "    f_csv = csv.reader(f, delimiter=';')\n",
+    "    header = next(f_csv)\n",
+    "    rows = [r for r in f_csv]\n",
+    "print (header)\n",
+    "print(rows [2])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "8e3dc41e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['Группа', 'Фамилия', 'Имя', 'Возраст', 'Класс']\n",
+      "['BI21-5', 'Ivanov', 'Kolya', '17', 'm']\n",
+      "['BI21-6', 'Petrova', 'Masha', '10', 'f']\n",
+      "['BI21-7', 'Ashin', 'Maksim', '20', 'm']\n"
+     ]
+    }
+   ],
+   "source": [
+    "import csv\n",
+    "f = open('O:\\\\Факультет ИТиАБД\\\\БИ21-6\\\\Бут Богдан Олегович - 218163\\\\BI7_1304.csv')\n",
+    "f_csv = csv.reader(f, delimiter=';')\n",
+    "for row in f_csv:\n",
+    "    \n",
+    "    print (row)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "c77a6e9f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import csv\n",
+    "with open('O:\\\\Факультет ИТиАБД\\\\БИ21-6\\\\Бут Богдан Олегович - 218163\\\\BI7_1304.csv','w') as f:\n",
+    "    f_csv = csv.writer(f,delimiter=';',lineterminator='\\r')\n",
+    "    f_csv.writerow([\"Имя\",\"Класс\",\"Возраст\"])\n",
+    "    f_csv.writerow([\"Женя\",\"3\",\"10\"])\n",
+    "    f_csv.writerow([\"Саша\",\"5\",\"12\"])\n",
+    "    f_csv.writerow([\"Маша\",\"11\",\"18\"])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "f61ffe5f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Всё ок\n"
+     ]
+    }
+   ],
+   "source": [
+    "myData = [[\"aa\",\"ss\",\"dd\"],\n",
+    "          ['zz','xx','cc'],\n",
+    "         ['A','D','B']]\n",
+    "\n",
+    "f = open('O:\\\\Факультет ИТиАБД\\\\БИ21-6\\\\Бут Богдан Олегович - 218163\\\\BI7_1304.csv','w')\n",
+    "with f:\n",
+    "    f_csv = csv.writer(f,delimiter=';',lineterminator='\\r')\n",
+    "    f_csv.writerows(myData)\n",
+    "print(\"Всё ок\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 91,
+   "id": "fd3fa720",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Введите количество действительных чисел: 5\n",
+      "[3, 8, 10, -7, 2]\n",
+      "['3;8;10;-7;2']\n",
+      "8\n",
+      "-7\n",
+      "-3360\n"
+     ]
+    },
+    {
+     "ename": "IndexError",
+     "evalue": "list index out of range",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mIndexError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[1;32m<ipython-input-91-8ba37f356af9>\u001b[0m in \u001b[0;36m<module>\u001b[1;34m\u001b[0m\n\u001b[0;32m     23\u001b[0m \u001b[0ms\u001b[0m\u001b[1;33m=\u001b[0m\u001b[1;36m0\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m     24\u001b[0m \u001b[1;32mfor\u001b[0m \u001b[0mi\u001b[0m \u001b[1;32min\u001b[0m \u001b[0md\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m---> 25\u001b[1;33m     \u001b[1;32mif\u001b[0m \u001b[0mint\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mr1\u001b[0m\u001b[1;33m[\u001b[0m\u001b[0mi\u001b[0m\u001b[1;33m]\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m>\u001b[0m\u001b[1;36m0\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m     26\u001b[0m         \u001b[0ms\u001b[0m\u001b[1;33m=\u001b[0m\u001b[0ms\u001b[0m\u001b[1;33m+\u001b[0m\u001b[0mint\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mr1\u001b[0m\u001b[1;33m[\u001b[0m\u001b[0mi\u001b[0m\u001b[1;33m]\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m     27\u001b[0m \u001b[0mprint\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m'Сумма положительных чиселж: '\u001b[0m\u001b[1;33m,\u001b[0m\u001b[0ms\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;31mIndexError\u001b[0m: list index out of range"
+     ]
+    }
+   ],
+   "source": [
+    "import random\n",
+    "import csv\n",
+    "n=int(input('Введите количество действительных чисел: '))\n",
+    "d=[]\n",
+    "for i in range(n):\n",
+    "    d.append(random.randint(-10,10))\n",
+    "print(d)\n",
+    "with open('O:\\\\Факультет ИТиАБД\\\\БИ21-6\\\\Бут Богдан Олегович - 218163\\\\112.csv','w') as f:\n",
+    "    f_csv = csv.writer(f,delimiter=';',lineterminator='\\r')\n",
+    "    f_csv.writerow(d)\n",
+    "f1= open('O:\\\\Факультет ИТиАБД\\\\БИ21-6\\\\Бут Богдан Олегович - 218163\\\\112.csv','r')\n",
+    "f_csv = csv.reader(f1)\n",
+    "for row in f_csv:\n",
+    "    print(row)\n",
+    "r=row[0]\n",
+    "r1=r.split(';')\n",
+    "print(max(r1))\n",
+    "print(min(r1))\n",
+    "w=1\n",
+    "for i in d:\n",
+    "    w *= i\n",
+    "print(w)\n",
+    "s=0\n",
+    "for i in d:\n",
+    "    if int(r1[i])>0:\n",
+    "        s=s+int(r1[i])\n",
+    "print('Сумма положительных чиселж: ',s)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "7444b0bc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Введите данныеACHERMANN\n",
+      "ACHERMANN;Sarah;cewas;Project Manager;Association;Willisau;;Switzerland\n"
+     ]
+    }
+   ],
+   "source": [
+    "import csv\n",
+    "word=input('Введите данные')\n",
+    "f1= open('//Users//on3hand//Desktop//participants.csv','r')\n",
+    "f_csv = csv.reader(f1, delimiter=';')\n",
+    "for line in f1:\n",
+    "        if word in line:\n",
+    "            print(line, end='')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "e49a31c7",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[{'Fam;Имя;Возраст': 'Иванов;Максим;20'}, {'Fam;Имя;Возраст': 'Максимов;Иван;18'}, {'Fam;Имя;Возраст': 'Петров;Петр;19'}]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import csv\n",
+    "results = []\n",
+    "with open ('//Users//on3hand//Desktop//test1.csv', encoding='utf-8-sig') as f:\n",
+    "    f1 = csv.DictReader(f)\n",
+    "    for row in f1:\n",
+    "        results.append(row)\n",
+    "    print(results)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "e7aa0c54",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Всё ок\n"
+     ]
+    }
+   ],
+   "source": [
+    "import csv\n",
+    "with open ('//Users//on3hand//Desktop//test2.csv','w', encoding='utf-8-sig') as f:\n",
+    "    name = [\"Name\",\"Age\"]\n",
+    "    f_csv = csv.DictWriter(f,delimiter=';',lineterminator='\\r',fieldnames=name)\n",
+    "    f_csv.writeheader()\n",
+    "    f_csv.writerow({\"Name\": \"Ivan\", \"Age\": \"15\"})\n",
+    "    f_csv.writerow({\"Name\": \"Arthur\", \"Age\": \"18\"})\n",
+    "print(\"Всё ок\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "3e880f1b",
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3\n",
+      "[['ср', 'вт', 'чт', 'ср'], ['вс', 'ср', 'пт', 'сб'], ['сб', 'пн', 'пн', 'чт']]\n",
+      "ок\n"
+     ]
+    }
+   ],
+   "source": [
+    "import random\n",
+    "n=3\n",
+    "m=4\n",
+    "mat1=[[0]*m for i in range(n)]\n",
+    "days=['пн','вт','ср','чт','пт','сб','вс']\n",
+    "f=random.randint(0,6)\n",
+    "print(f)\n",
+    "for i in range(n):\n",
+    "    for j in range(m):\n",
+    "        f=random.randint(0,6)\n",
+    "        mat1[i][j]=days[f]\n",
+    "print(mat1)\n",
+    "file = open ('//Users//on3hand//Desktop//test3.csv','w', encoding='utf-8-sig')\n",
+    "with file:\n",
+    "    f_csv = csv.writer(file, delimiter=';', lineterminator='\\r')\n",
+    "    f_csv.writerows(mat1)\n",
+    "print('ок')\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a5cbd4a8",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0bbf559b",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
